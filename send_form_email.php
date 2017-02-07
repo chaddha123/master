@@ -10,6 +10,7 @@ if (isset($_POST['email'])) {
 
     $email_subject = "Email from " . $_POST['name'] . " as a " . $_POST['tester_client'];
 
+
     // echo $email_subject;exit;
 
     function died($error) {
@@ -26,6 +27,7 @@ if (isset($_POST['email'])) {
 
         die();
     }
+
 
     // validation expected data exists
 
