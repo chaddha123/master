@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $countries = array("AF" => "Afghanistan",
 "AX" => "Åland Islands",
 "AL" => "Albania",
@@ -290,7 +290,7 @@ $countries = array("AF" => "Afghanistan",
  
  <td valign="top">
  
-  <input  type="text" name="phone" maxlength="30" size="30">
+  <input  type="text" name="phone" maxlength="10" size="10">
  
  </td>
  
@@ -299,17 +299,18 @@ $countries = array("AF" => "Afghanistan",
  
  <td valign="top">
  
-  <label for="comments">countries</label>
+  <label for="countries">countries</label>
  
  </td>
  <td valign="top">
  <select name="countries">
+<option value="">Select Country</option>
 <?php
-
 foreach($countries as $key => $value) {
 
 ?>
-<option value="<?= $key ?>" title="<?= htmlspecialchars($value) ?>"><?= htmlspecialchars($value) ?></option>
+
+<option value="<?= htmlspecialchars($value) ?>" title="<?= htmlspecialchars($value) ?>"><?= htmlspecialchars($value) ?></option>
 <?php
 
 }
@@ -323,7 +324,7 @@ foreach($countries as $key => $value) {
  
  <td valign="top">
  
-  <label for="comments">select option</label>
+  <label for="option">select option</label>
  
  </td>
  <td valign="top">
@@ -338,7 +339,7 @@ foreach($countries as $key => $value) {
  
  <td colspan="2" style="text-align:center">
  
-  <input type="submit" value="Submit">   <a href="http://localhost/localhost/email_form.php">Email Form</a>
+  <input type="submit" value="Submit">   
  
  </td>
  

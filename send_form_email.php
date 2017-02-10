@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // error_reporting(E_ALL);
 if (isset($_POST['email'])) {
 
@@ -6,12 +6,12 @@ if (isset($_POST['email'])) {
 
     // EDIT THE 2 LINES BELOW AS REQUIRED
 
-    $email_to = "chaddha.sachin@gmail.com";
+    $email_to = "ravi.weasel@gmail.com";
+	$email_cc = "chaddha.sachin@gmail.com";
 
     $email_subject = "Email from " . $_POST['name'] . " as a " . $_POST['tester_client'];
 
-
-    // echo $email_subject;exit;
+    
 
     function died($error) {
 
@@ -23,11 +23,10 @@ if (isset($_POST['email'])) {
 
         echo $error . "<br /><br />";
 
-        echo "Please go back and fix these errors.<br /><br />";
+        echo "Please go back and fix these errors.<br />";
 
         die();
     }
-
 
     // validation expected data exists
 
@@ -70,6 +69,14 @@ if (isset($_POST['email'])) {
         $error_message .= 'The Name you entered does not appear to be valid.<br />';
     }
 
+
+$phone_exp = "/^[789]\d{9}$/";
+
+    if (!preg_match($phone_exp, $phone)) {
+
+        $error_message .= 'The phone number should be start from 7 or 8 or 9 digit only.Please Specify A Valid Phone Number';
+    }
+
     if (strlen($error_message) > 0) {
         died($error_message);
     }
@@ -101,23 +108,26 @@ if (isset($_POST['email'])) {
 
     $headers = 'From: ' . $email_from . "\r\n" .
             'Reply-To: ' . $email_from . "\r\n" .
+	     'cc: ' . $email_cc . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
     $a = @mail($email_to, $email_subject, $email_message, $headers);
-    print_r($a);
-    exit;
+	if($a=='1'){
+
     ?>
+<html>
+<body> 
+<table width="600" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<div align="center"> Thank you for contacting us. We will be in touch with you very soon.
+</div>
+</td>
+</tr>
+</table>
+</body> 
+</html>
+ <?php
+}}
 
-
-
-    <!-- include your own success html here -->
-
-
-
-    Thank you for contacting us. We will be in touch with you very soon.
-
-
-
-    <?php
-}
 ?>
